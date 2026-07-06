@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Invoice INV-{{ '%03d' % inv.id }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="invoice-page">
+        <div class="no-print" style="margin-bottom: 15px;">
+            <button onclick="window.print()">Print Invoice</button>
+            <a href="/invoices">Back to Invoices</a>
+        </div>
+
+        <h1>INVOICE</h1>
+        <p><b>Sharma Consultancy Services</b><br>
+        204, Business Park, MG Road, Pune - 411001<br>
+        GSTIN: 27ABCDE1234F1Z5</p>
+
+        <hr>
+
+        <table class="invoice-table">
+            <tr><td><b>Invoice No:</b></td><td>INV-{{ '%03d' % inv.id }}</td></tr>
+            <tr><td><b>Date:</b></td><td>{{ inv.invoice_date }}</td></tr>
+            <tr><td><b>Billed To:</b></td><td>{{ inv.client_name }}{% if inv.company %} ({{ inv.company }}){% endif %}, {{ inv.city }}</td></tr>
+            <tr><td><b>Project:</b></td><td>{{ inv.project_title }}</td></tr>
+            <tr><td><b>Status:</b></td><td>{{ inv.status }}</td></tr>
+        </table>
+
+        <hr>
+
+        <h2 class="invoice-amount">Total Amount: Rs. {{ '%.2f' % inv.amount }}</h2>
+
+        <p style="margin-top: 40px;">Thank you for your business!</p>
+    </div>
+</body>
+</html>

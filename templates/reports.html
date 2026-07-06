@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Reports</h2>
+
+<div class="cards">
+    <div class="card">
+        <h3>Rs. {{ '%.2f' % revenue }}</h3>
+        <p>Total Revenue (Paid)</p>
+    </div>
+    <div class="card">
+        <h3>Rs. {{ '%.2f' % pending }}</h3>
+        <p>Pending Amount (Unpaid)</p>
+    </div>
+</div>
+
+<h3 style="margin-top: 30px;">New Clients Per Month</h3>
+<table style="max-width: 400px;">
+    <tr>
+        <th>Month</th>
+        <th>Clients Added</th>
+    </tr>
+    {% for row in clients_per_month %}
+    <tr>
+        <td>{{ row.month }}</td>
+        <td>{{ row.total }}</td>
+    </tr>
+    {% else %}
+    <tr><td colspan="2">No data yet.</td></tr>
+    {% endfor %}
+</table>
+{% endblock %}

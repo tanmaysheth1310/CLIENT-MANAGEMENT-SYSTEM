@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Clients</h2>
+
+<div class="form-box">
+    <h3>Add New Client</h3>
+    <form method="POST">
+        <input type="text" name="name" placeholder="Name *" required>
+        <input type="text" name="company" placeholder="Company">
+        <input type="email" name="email" placeholder="Email">
+        <input type="text" name="phone" placeholder="Phone">
+        <input type="text" name="city" placeholder="City">
+        <button type="submit">Add Client</button>
+    </form>
+</div>
+
+<form method="GET" class="search-form">
+    <input type="text" name="search" placeholder="Search by name..." value="{{ search }}">
+    <button type="submit">Search</button>
+    {% if search %}<a href="/clients">Clear</a>{% endif %}
+</form>
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Company</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>City</th>
+        <th>Added On</th>
+        <th>Actions</th>
+    </tr>
+    {% for c in clients %}
+    <tr>
+        <td>{{ c.id }}</td>
+        <td>{{ c.name }}</td>
+        <td>{{ c.company }}</td>
+        <td>{{ c.email }}</td>
+        <td>{{ c.phone }}</td>
+        <td>{{ c.city }}</td>
+        <td>{{ c.created_at }}</td>
+        <td>
+            <a href="/clients/edit/{{ c.id }}">Edit</a>
+            <a href="/clients/delete/{{ c.id }}" onclick="return confirm('Delete this client? Their projects and invoices will also be deleted.')" class="delete-link">Delete</a>
+        </td>
+    </tr>
+    {% else %}
+    <tr><td colspan="8">No clients found.</td></tr>
+    {% endfor %}
+</table>
+{% endblock %}

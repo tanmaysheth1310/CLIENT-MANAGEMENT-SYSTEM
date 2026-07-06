@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Projects</h2>
+
+<div class="form-box">
+    <h3>Add New Project</h3>
+    <form method="POST">
+        <select name="client_id" required>
+            <option value="">-- Select Client --</option>
+            {% for c in client_list %}
+            <option value="{{ c.id }}">{{ c.name }}</option>
+            {% endfor %}
+        </select>
+        <input type="text" name="title" placeholder="Project Title *" required>
+        <select name="status">
+            <option value="Ongoing">Ongoing</option>
+            <option value="Completed">Completed</option>
+        </select>
+        <label>Start:</label>
+        <input type="date" name="start_date">
+        <label>End:</label>
+        <input type="date" name="end_date">
+        <button type="submit">Add Project</button>
+    </form>
+</div>
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Project</th>
+        <th>Client</th>
+        <th>Status</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Actions</th>
+    </tr>
+    {% for p in projects %}
+    <tr>
+        <td>{{ p.id }}</td>
+        <td>{{ p.title }}</td>
+        <td>{{ p.client_name }}</td>
+        <td>
+            {% if p.status == 'Ongoing' %}
+                <span class="badge ongoing">Ongoing</span>
+            {% else %}
+                <span class="badge completed">Completed</span>
+            {% endif %}
+        </td>
+        <td>{{ p.start_date }}</td>
+        <td>{{ p.end_date }}</td>
+        <td><a href="/projects/status/{{ p.id }}">Toggle Status</a></td>
+    </tr>
+    {% else %}
+    <tr><td colspan="7">No projects yet.</td></tr>
+    {% endfor %}
+</table>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Edit Client</h2>
+
+<div class="form-box">
+    <form method="POST">
+        <label>Name</label>
+        <input type="text" name="name" value="{{ client.name }}" required>
+        <label>Company</label>
+        <input type="text" name="company" value="{{ client.company }}">
+        <label>Email</label>
+        <input type="email" name="email" value="{{ client.email }}">
+        <label>Phone</label>
+        <input type="text" name="phone" value="{{ client.phone }}">
+        <label>City</label>
+        <input type="text" name="city" value="{{ client.city }}">
+        <button type="submit">Save Changes</button>
+        <a href="/clients">Cancel</a>
+    </form>
+</div>
+{% endblock %}

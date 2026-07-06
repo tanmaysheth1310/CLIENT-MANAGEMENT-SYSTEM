@@ -1,0 +1,205 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: #f4f4f4;
+    color: #333;
+}
+
+.navbar {
+    background: #2c3e50;
+    padding: 12px 20px;
+}
+
+.navbar .brand {
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    margin-right: 25px;
+}
+
+.navbar a {
+    color: #ddd;
+    text-decoration: none;
+    margin-right: 18px;
+}
+
+.navbar a:hover {
+    color: white;
+}
+
+.navbar .logout {
+    float: right;
+    color: #f39c12;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 0 15px;
+}
+
+.flash {
+    background: #dff0d8;
+    border: 1px solid #b2d8a8;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 3px;
+}
+
+/* dashboard cards */
+.cards {
+    display: flex;
+    gap: 15px;
+}
+
+.card {
+    background: white;
+    border: 1px solid #ddd;
+    padding: 20px 30px;
+    text-align: center;
+    flex: 1;
+    border-radius: 4px;
+}
+
+.card h3 {
+    font-size: 28px;
+    margin: 0 0 5px 0;
+    color: #2c3e50;
+}
+
+.card p {
+    margin: 0;
+    color: #777;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    margin-top: 15px;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 8px 10px;
+    text-align: left;
+    font-size: 14px;
+}
+
+th {
+    background: #2c3e50;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background: #f9f9f9;
+}
+
+.form-box {
+    background: white;
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+}
+
+.form-box h3 {
+    margin-top: 0;
+}
+
+input, select {
+    padding: 7px;
+    margin: 4px 6px 4px 0;
+    border: 1px solid #bbb;
+    border-radius: 3px;
+}
+
+button {
+    background: #27ae60;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #219150;
+}
+
+.search-form {
+    margin: 10px 0;
+}
+
+.badge {
+    padding: 3px 8px;
+    border-radius: 3px;
+    font-size: 12px;
+    color: white;
+}
+
+.badge.ongoing {
+    background: #f39c12;
+}
+
+.badge.completed {
+    background: #27ae60;
+}
+
+.badge.unpaid {
+    background: #e74c3c;
+}
+
+.delete-link {
+    color: #e74c3c;
+}
+
+/* login page */
+.login-box {
+    max-width: 320px;
+    margin: 100px auto;
+    background: white;
+    border: 1px solid #ddd;
+    padding: 25px;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.login-box input {
+    width: 90%;
+    margin-bottom: 10px;
+}
+
+.login-box button {
+    width: 95%;
+}
+
+/* invoice print page */
+.invoice-page {
+    max-width: 700px;
+    margin: 30px auto;
+    background: white;
+    border: 1px solid #ccc;
+    padding: 30px;
+}
+
+.invoice-table td {
+    border: none;
+    padding: 5px;
+}
+
+.invoice-amount {
+    color: #2c3e50;
+}
+
+@media print {
+    .no-print {
+        display: none;
+    }
+    body {
+        background: white;
+    }
+    .invoice-page {
+        border: none;
+    }
+}

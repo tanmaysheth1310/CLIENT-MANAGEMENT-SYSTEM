@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Invoices</h2>
+
+<div class="form-box">
+    <h3>Create Invoice</h3>
+    <form method="POST">
+        <select name="project_id" required>
+            <option value="">-- Select Project --</option>
+            {% for p in project_list %}
+            <option value="{{ p.id }}">{{ p.title }}</option>
+            {% endfor %}
+        </select>
+        <input type="number" name="amount" placeholder="Amount (Rs.) *" min="1" required>
+        <select name="status">
+            <option value="Unpaid">Unpaid</option>
+            <option value="Paid">Paid</option>
+        </select>
+        <button type="submit">Create Invoice</button>
+    </form>
+</div>
+
+<table>
+    <tr>
+        <th>Invoice #</th>
+        <th>Project</th>
+        <th>Client</th>
+        <th>Amount</th>
+        <th>Status</th>
+        <th>Date</th>
+        <th>Actions</th>
+    </tr>
+    {% for inv in invoices %}
+    <tr>
+        <td>INV-{{ '%03d' % inv.id }}</td>
+        <td>{{ inv.project_title }}</td>
+        <td>{{ inv.client_name }}</td>
+        <td>Rs. {{ '%.2f' % inv.amount }}</td>
+        <td>
+            {% if inv.status == 'Paid' %}
+                <span class="badge completed">Paid</span>
+            {% else %}
+                <span class="badge unpaid">Unpaid</span>
+            {% endif %}
+        </td>
+        <td>{{ inv.invoice_date }}</td>
+        <td>
+            <a href="/invoices/print/{{ inv.id }}">Print View</a>
+            {% if inv.status == 'Unpaid' %}
+                <a href="/invoices/paid/{{ inv.id }}">Mark Paid</a>
+            {% endif %}
+        </td>
+    </tr>
+    {% else %}
+    <tr><td colspan="7">No invoices yet.</td></tr>
+    {% endfor %}
+</table>
+{% endblock %}

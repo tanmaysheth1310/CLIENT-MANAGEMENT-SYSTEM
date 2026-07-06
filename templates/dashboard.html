@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Dashboard</h2>
+
+<div class="cards">
+    <div class="card">
+        <h3>{{ total_clients }}</h3>
+        <p>Total Clients</p>
+    </div>
+    <div class="card">
+        <h3>{{ active_projects }}</h3>
+        <p>Active Projects</p>
+    </div>
+    <div class="card">
+        <h3>{{ pending_invoices }}</h3>
+        <p>Pending Invoices</p>
+    </div>
+</div>
+
+<p style="margin-top: 30px;">Welcome to the CRM. Use the menu above to manage clients, projects and invoices.</p>
+{% endblock %}
